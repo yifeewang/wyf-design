@@ -5,7 +5,7 @@
 Install dependencies,
 
 ```bash
-$ npm i
+$ yarn
 ```
 
 Start the dev server,
@@ -17,7 +17,7 @@ $ npm start
 Build documentation,
 
 ```bash
-$ npm run docs:build
+$ npm run build
 ```
 
 Run test,

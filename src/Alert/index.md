@@ -3,18 +3,18 @@ nav:
   title: 组件
   path: /components
 group:
-  title: Foo
+  title: Alert
 ---
 
-## Foo
+## Alert
 
 Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from 'wyf-design';
+import { Alert } from 'wyf-design';
 
-export default () => <Foo title="First Demo" />;
+export default () => <Alert kind="warning">这是对你的警告</Alert>;
 ```
 
 More skills for writing demo: https://www.bookstack.cn/books/dumi-1.x
