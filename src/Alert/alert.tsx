@@ -13,7 +13,7 @@ const kinds: KindMap = {
 
 const Alert: React.FC<AlertProps> = ({ children, kind = 'info', ...rest }) => (
   <div
-    className="wyf-alert"
+    className="alert_wraper"
     style={{
       background: kinds[kind],
     }}

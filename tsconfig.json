@@ -11,7 +11,8 @@
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
       "resolveJsonModule": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "noImplicitThis": false
     },
     "include": ["src", "docs", "global.d.ts"],
     "exclude": ["node_modules"]
