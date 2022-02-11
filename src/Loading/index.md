@@ -4,6 +4,7 @@ nav:
   path: /components
 group:
   title: Loading
+  path: /components/base
 ---
 
 ## Loading

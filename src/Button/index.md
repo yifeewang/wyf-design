@@ -4,6 +4,7 @@ nav:
   path: /components
 group:
   title: Button
+  path: /components/base
 ---
 
 ## Button

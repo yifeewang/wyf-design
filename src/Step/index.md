@@ -4,6 +4,7 @@ nav:
   path: /components
 group:
   title: Step
+  path: /components/base
 ---
 
 ## Step

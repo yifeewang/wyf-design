@@ -4,6 +4,7 @@ nav:
   path: /components
 group:
   title: Spin
+  path: /components/base
 ---
 
 ## Spin
