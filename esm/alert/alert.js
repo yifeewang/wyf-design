@@ -18,7 +18,7 @@ var Alert = function Alert(_ref) {
       rest = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/React.createElement("div", _extends({
-    className: "wyf-alert",
+    className: "alert_wraper",
     style: {
       background: kinds[kind]
     }
