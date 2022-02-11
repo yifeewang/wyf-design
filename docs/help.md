@@ -27,6 +27,10 @@ import 'wyf-design/es/alert/style'; // 手动按需加载 less
 
 ReactDOM.render(<Alert kind="warning">这是一条警告提示</Alert>, mountNode);
 ```
+### 项目暂时需要引入less
+暂时未对源代码less文件做处理，需要引入less
+后续再跟进
+
 
 ### 自动按需加载
 
