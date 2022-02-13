@@ -6,13 +6,13 @@
 /yarn-error.log
 /yarn.lock
 /package-lock.json
-/lib
-/esm
+# /lib
+# /esm
 
 # production
 /es
-/lib
-/esm
+# /lib
+# /esm
 /docs-dist
 
 # misc

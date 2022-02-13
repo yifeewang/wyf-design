@@ -34,6 +34,7 @@
     "deploy:site": "npm run build:site && gh-pages -d doc-site",
     "clean": "rimraf lib esm dist",
     "build": "cross-env NODE_ENV=prod npm run clean && npm run build:types && gulp build",
+    "deploy": "bash deploy.sh",
     "build:types": "tsc -p tsconfig.build.json && cpr lib esm",
     "prepublishOnly": "npm run build",
     "release": "np --no-cleanup --no-tests --any-branch",
