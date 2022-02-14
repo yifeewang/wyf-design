@@ -56,7 +56,6 @@
   "lint-staged": {
     "src/**/*.ts?(x)": [
       "prettier --write",
-      "eslint --fix",
       "git add"
     ],
     "src/**/*.less": [
@@ -65,7 +64,6 @@
     ],
     "docs/**/*.ts?(x)": [
       "prettier --write",
-      "eslint --fix",
       "git add"
     ],
     "docs/**/*.less": [
