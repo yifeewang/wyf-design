@@ -21,6 +21,7 @@ export default defineConfig({
               'Loading/index.md', 
               'Space/index.md', 
               'Spin/index.md', 
+              'Switch/index.md', 
             ],
         },
         {
@@ -29,6 +30,9 @@ export default defineConfig({
             children: [
               // 菜单子项（可选）
               'Step/index.md', // 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
+              'Slide/index.md',
+              'NoticeBar/index.md',
+              'NoticeList/index.md',
             ],
         },
     ],

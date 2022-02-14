@@ -174,7 +174,7 @@ const Space: React.FC<SpaceProps> = (props) => {
     <StyledSpace
       direction={direction}
       align={mergedAlign as any}
-      className={clsx(className, 'uc-space')}
+      className={clsx(className)}
       style={{
         ...gapStyle,
         ...style,
@@ -185,7 +185,5 @@ const Space: React.FC<SpaceProps> = (props) => {
     </StyledSpace>
   );
 };
-
-Space.displayName = 'UC-Space';
 
 export default Space;

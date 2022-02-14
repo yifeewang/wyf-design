@@ -27,14 +27,5 @@ type GAFieldsObject = {
 };
 
 interface Window {
-  ga: (
-    command: 'send',
-    hitType: 'event' | 'pageview',
-    fieldsObject: GAFieldsObject | string,
-  ) => void;
-  reloadAuthorized: () => void;
 }
-
-declare let ga: () => void;
-
 declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;

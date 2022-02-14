@@ -118,28 +118,6 @@ export default () => {
           Disabled
         </Button>
       </Space>
-      <Divider>"防止重复click</Divider>
-      <Divider>禁用状态</Divider>
-      <Space wrap>
-        <Button
-          wait
-          onClick={() => {
-            console.log(1);
-          }}
-        >
-          1s内点一次
-        </Button>
-
-        <Button
-          outlined
-          wait={2000}
-          onClick={() => {
-            console.log(2);
-          }}
-        >
-          2s内点一次
-        </Button>
-      </Space>
     </div>
   );
 };

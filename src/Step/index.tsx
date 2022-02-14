@@ -24,6 +24,7 @@ const Steps = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     const resizeHandler = () => {
       if (steps.length > 1) {
         const domEl = domRef.current;
+        console.log('domEl', domEl.offsetWidth);
         setSpace(
           Math.max((isHorizontal ? domEl.offsetWidth : domEl.offsetHeight) / steps.length, 60),
         );
@@ -63,7 +64,7 @@ const Steps = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                   onClick={() => {
                     item.callBack(item);
                   }}
-                 />
+                />
               ) : (
                 ''
               )}

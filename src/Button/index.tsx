@@ -1,4 +1,4 @@
-import type { HTMLAttributes} from 'react';
+import type { HTMLAttributes } from 'react';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import clsx from 'clsx';
@@ -38,8 +38,6 @@ type Props = {
   htmlType?: 'submit' | 'reset' | 'button' | undefined;
   /** 点击回调 */
   onClick?: (e: React.SyntheticEvent) => void;
-  /** 点击后，下次能点击的时间间隔，防止重复点击, 如果是true, 间隔默认是1s  */
-  wait?: number | boolean;
 } & HTMLAttributes<HTMLButtonElement | HTMLAnchorElement | HTMLDivElement>;
 
 const StyledButton = styled.button`
@@ -176,20 +174,10 @@ const Button = React.forwardRef<HTMLButtonElement, Props>((props, ref) => {
     loading,
     ghost,
     onClick,
-    wait,
     ...rest
   } = props;
 
   const [waiting, setWaiting] = useState(false);
-
-  const waitTime =
-    typeof wait === 'number' && wait > 0
-      ? wait
-      : typeof wait === 'boolean' && wait === true
-      ? 1000
-      : 0;
-
-  const usingWait = waitTime > 0;
 
   const icon = props.icon || (loading ? <Spin /> : null);
 
@@ -201,12 +189,6 @@ const Button = React.forwardRef<HTMLButtonElement, Props>((props, ref) => {
       type={htmlType}
       onClick={(e: any) => {
         onClick?.(e);
-        if (usingWait) {
-          setWaiting(true);
-          setTimeout(() => {
-            setWaiting(false);
-          }, waitTime);
-        }
       }}
       className={clsx(
         'uc-btn',

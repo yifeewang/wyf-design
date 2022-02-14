@@ -78,7 +78,7 @@ const Spin = React.forwardRef<HTMLDivElement, Props>(
         ? 700
         : 0;
 
-    const el = <StyledSpin {...rest} ref={ref} className={clsx(className, 'uc-spin')} />;
+    const el = <StyledSpin {...rest} ref={ref} className={clsx(className)} />;
 
     return waitTime > 0 ? (
       <WaitLoading visible={loading} wait={waitTime}>
@@ -90,6 +90,6 @@ const Spin = React.forwardRef<HTMLDivElement, Props>(
   },
 );
 
-Spin.displayName = 'UC-Spin';
+// Spin.displayName = 'UC-Spin';
 
 export default Spin;
