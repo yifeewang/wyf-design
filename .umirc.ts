@@ -33,6 +33,7 @@ export default defineConfig({
               'Slide/index.md',
               'NoticeBar/index.md',
               'NoticeList/index.md',
+              'Banner/index.md',
             ],
         },
     ],

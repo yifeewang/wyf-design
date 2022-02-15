@@ -95,6 +95,7 @@ const StyledSpace = styled.div<{
   display: inline-flex;
   flex-direction: ${({ direction }) => flexDirectionMap[direction]};
   align-items: ${({ align }) => align};
+  font-size: 14px;
 `;
 
 /** 间距 */

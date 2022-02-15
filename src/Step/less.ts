@@ -2,6 +2,88 @@ import { getThemeColorCss } from '../themeHelper';
 import styled from 'styled-components';
 
 const StyledSteps = styled.div<{ space: number }>`
+  .step-wraper {
+    width: 100%;
+    .step-gift {
+      position: absolute;
+      top: -0.2rem;
+      right: -0.05rem;
+      width: 0.2rem;
+      height: 0.2rem;
+    }
+    .step_item {
+      position: absolute;
+    }
+    .page-steps-progress {
+      position: relative;
+      width: 100%;
+      height: 0.15rem;
+      margin: 0.62rem auto;
+      border: 1px solid #999;
+      border-radius: 0.5rem;
+    }
+
+    .progress {
+      position: absolute;
+      left: 0;
+      width: 0%;
+      height: 0.15rem;
+      background: linear-gradient(#fe6209, #ff9b15);
+      border-radius: 0.5rem;
+      transition: 0.4s ease;
+    }
+
+    .step_text {
+      position: absolute;
+      top: 0.15rem;
+      display: flex;
+      width: 100%;
+      margin-left: -0.05rem;
+      color: #8f4f35;
+      font-size: 0.21rem;
+      dth: 106%;
+
+      > view {
+        position: relative;
+        width: 100%/17;
+        height: 0.3rem;
+        // text-align: left;
+      }
+
+      .small_gift_common {
+        position: relative;
+        top: -1rem;
+        right: 0.02rem;
+        width: 0.4rem;
+        height: 0.54rem;
+      }
+
+      .big_gift_common {
+        position: relative;
+        top: -1.05rem;
+        right: 0.08rem;
+        width: 0.64rem;
+        height: 0.71rem;
+      }
+
+      .small_gift {
+        background: url('@{imgurl}table_redbag_inActive.webp') no-repeat;
+        background-size: 100%;
+      }
+      .small_gift_hasDraw {
+        background: url('@{imgurl}table_redbag_active.webp') no-repeat;
+        background-size: 100%;
+      }
+      .big_gift {
+        background: url('@{imgurl}table_gift_inActive.webp') no-repeat;
+        background-size: 100%;
+      }
+      .big_gift_hasDraw {
+        background: url('@{imgurl}table_gift_active.webp') no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
   .step {
     .step-box {
       position: relative;
@@ -77,6 +159,10 @@ const StyledSteps = styled.div<{ space: number }>`
   }
   &.horizontal {
     display: flex;
+
+    .step-normal-wraper {
+      display: flex;
+    }
     .step {
       &:not(:last-child) {
         width: ${(props) => props.space}px;

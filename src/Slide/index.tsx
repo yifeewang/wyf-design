@@ -377,4 +377,6 @@ const Slide = React.forwardRef<SlideRefType, Props>((props, ref) => {
   );
 });
 
+Slide.displayName = 'UC-Slide';
+
 export default Slide;

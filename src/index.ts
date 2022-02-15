@@ -9,3 +9,5 @@ export { default as Switch } from './Switch';
 export { default as Slide } from './Slide';
 export { default as NoticeBar } from './NoticeBar';
 export { default as NoticeList } from './NoticeList';
+export { default as Banner } from './Banner';
+import './rem';

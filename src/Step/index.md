@@ -13,7 +13,7 @@ Demo:
 
 ```tsx
 import React, {useState} from 'react';
-import { Step } from 'wyf-design';
+import { Step, Divider } from 'wyf-design';
 
 
 export default () => {
@@ -42,7 +42,17 @@ export default () => {
             title: '步骤3', 
             giftType: 'notActive',  
             giftActiveSrc: 'https://ctopmweb-cdn.iyoudui.com/myx_draw/hzreq-15/table_redbag_active.webp',
-            giftNotActiveSrc: 'https://ctopmweb-cdn.iyoudui.com/myx_draw/hzreq-15/table_gift_inActive.webp'
+            giftNotActiveSrc: 'https://ctopmweb-cdn.iyoudui.com/myx_draw/hzreq-15/table_gift_inActive.webp',
+            callBack: (item) => {
+                if(item.giftType === 'active') {
+                    window.alert('恭喜您获取红包')
+                    setType('notActive')
+                }
+                else {
+                    window.alert('您已经获取红包')
+                    setType('active')
+                }
+            }
         },
         { title: '步骤4' },
     ];
@@ -55,14 +65,46 @@ export default () => {
         { title: '步骤3'},
         { title: '步骤4' },
     ];
+
+    let steps3 = [
+        { title: '1' },
+        { 
+            title: '2', 
+            giftType,  
+            giftActiveSrc: 'https://ctopmweb-cdn.iyoudui.com/myx_draw/hzreq-15/table_redbag_active.webp',
+            giftNotActiveSrc: 'https://ctopmweb-cdn.iyoudui.com/myx_draw/hzreq-15/table_gift_inActive.webp',
+            callBack: (item) => {
+                if(item.giftType === 'active') {
+                    window.alert('恭喜您获取红包')
+                    setType('notActive')
+                }
+                else {
+                    window.alert('您已经获取红包')
+                    setType('active')
+                }
+            }
+        },
+        { 
+            title: '3', 
+            giftType: 'notActive',  
+            giftActiveSrc: 'https://ctopmweb-cdn.iyoudui.com/myx_draw/hzreq-15/table_redbag_active.webp',
+            giftNotActiveSrc: 'https://ctopmweb-cdn.iyoudui.com/myx_draw/hzreq-15/table_gift_inActive.webp',
+            callBack: (item) => {
+                if(item.giftType === 'active') {
+                    window.alert('恭喜您获取红包')
+                    setType('notActive')
+                }
+                else {
+                    window.alert('您已经获取红包')
+                    setType('active')
+                }
+            }
+        },
+        { title: '4' },
+    ];
     return (
         <div>
-            <div 
-                style={{
-                    width: '100%', 
-                    height: '30px', 
-                    margin: '20px 0'
-                }}> 横向进度条</div>
+            <Divider>横向进度条</Divider>
             <Step 
                 direction="horizontal" 
                 current={index} 
@@ -75,12 +117,7 @@ export default () => {
                 steps={steps1}
                 style={{ marginTop: 16 }}
             ></Step>
-            <div 
-                style={{
-                    width: '100%', 
-                    height: '30px', 
-                    margin: '20px 0'
-                }}> 纵向进度条</div>
+            <Divider>纵向进度条</Divider>
             <Step
                 direction="vertical"
                 current={index}
@@ -94,14 +131,22 @@ export default () => {
                 { title: '步骤4' },
                 ]}
             ></Step>
+            <Divider>动态进度条</Divider>
+            <Step 
+                direction="horizontal" 
+                current={index} 
+                steps={steps3}
+                type='special'
+            ></Step>
             <div
                 style={{
                     width: '100%', 
-                    height: '20px', 
+                    height: '0.2rem', 
+                    fontSize:' 0.16rem',
                     textAlign:'center',
-                    lineHeight: '20px',
+                    lineHeight: '0.2rem',
                     cursor: 'pointer',
-                    marginTop: '40px'
+                    marginTop: '0.2rem'
                 }}
                 onClick={() => {
                     setIndex((i) => {
