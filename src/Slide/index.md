@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   title: Slide
-  path: /components/base
+#   path: /components/base
 ---
 
 ## Slide

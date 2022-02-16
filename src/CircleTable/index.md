@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   title: CircleTable(大转盘)
-  path: /components/base
+#   path: /components/base
 ---
 
 ## CircleTable

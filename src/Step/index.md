@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   title: Step
-  path: /components/base
+#   path: /components/base
 ---
 
 ## Step
@@ -141,12 +141,12 @@ export default () => {
             <div
                 style={{
                     width: '100%', 
-                    height: '0.2rem', 
-                    fontSize:' 0.16rem',
+                    height: '20px', 
+                    fontSize:' 16px',
                     textAlign:'center',
-                    lineHeight: '0.2rem',
+                    lineHeight: '20px',
                     cursor: 'pointer',
-                    marginTop: '0.2rem'
+                    marginTop: '20px'
                 }}
                 onClick={() => {
                     setIndex((i) => {

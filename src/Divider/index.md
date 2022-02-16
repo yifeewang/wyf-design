@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   title: Divider
-  path: /components/base
+#   path: /components/base
 ---
 
 ## Divider
@@ -17,14 +17,14 @@ import { Divider } from 'wyf-design';
 
 export default () =>{
     return (
-        <div>
-            <div>基础分割线</div>
+        <div style={{fontSize: '16px'}}>
+            <div>基础分割线:</div>
             <Divider />
-            <div>带内容的分割线</div>
+            <div>带内容的分割线:</div>
             <Divider>默认内容在中间</Divider>
             <Divider textPosition="left">左侧内容</Divider>
             <Divider textPosition="right">右侧内容</Divider>
-            <div>自定义样式</div>
+            <div>自定义样式:</div>
             <Divider 
                 dashed 
                 color="#1677ff" 
@@ -32,7 +32,7 @@ export default () =>{
             >
                 自定义样式
             </Divider>
-            <div>垂直分隔线</div>
+            <div>垂直分隔线:</div>
             Text
             <Divider type="vertical" />
             <a href="#">Link</a>

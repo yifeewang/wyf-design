@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   title: Space
-  path: /components/base
+#   path: /components/base
 ---
 
 ## Space

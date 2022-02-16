@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   title: NoticeList
-  path: /components/base
+#   path: /components/base
 ---
 
 ## NoticeList

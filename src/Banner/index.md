@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   title: Banner
-  path: /components/base
+#   path: /components/base
 ---
 
 ## Banner
