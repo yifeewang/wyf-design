@@ -6,14 +6,16 @@
 /yarn-error.log
 /yarn.lock
 /package-lock.json
-# /lib
-# /esm
+/es
+/lib
+/esm
+/docs-dist
 
 # production
 /es
-# /lib
-# /esm
-# /docs-dist
+/lib
+/esm
+/docs-dist
 
 # misc
 .DS_Store

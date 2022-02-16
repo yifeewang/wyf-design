@@ -6,10 +6,10 @@ const StyledSteps = styled.div<{ space: number }>`
     width: 100%;
     .step-gift {
       position: absolute;
-      top: -0.2rem;
-      right: -0.05rem;
-      width: 0.2rem;
-      height: 0.2rem;
+      top: -20px;
+      right: -5px;
+      width: 20px;
+      height: 20px;
     }
     .step_item {
       position: absolute;
@@ -17,30 +17,30 @@ const StyledSteps = styled.div<{ space: number }>`
     .page-steps-progress {
       position: relative;
       width: 100%;
-      height: 0.15rem;
-      margin: 0.62rem auto;
+      height: 10px;
+      margin: 6px auto;
       border: 1px solid #999;
-      border-radius: 0.5rem;
+      border-radius: 5px;
     }
 
     .progress {
       position: absolute;
       left: 0;
       width: 0%;
-      height: 0.15rem;
+      height: 10px;
       background: linear-gradient(#fe6209, #ff9b15);
-      border-radius: 0.5rem;
+      border-radius: 5px;
       transition: 0.4s ease;
     }
 
     .step_text {
       position: absolute;
-      top: 0.15rem;
+      top: 10px;
       display: flex;
       width: 100%;
-      margin-left: -0.05rem;
+      margin-left: -5px;
       color: #8f4f35;
-      font-size: 0.21rem;
+      font-size: 16px;
       dth: 106%;
 
       > view {

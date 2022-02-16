@@ -15,8 +15,7 @@ export default defineConfig({
             path: 'base',
             children: [
               // 菜单子项（可选）
-              'Alert/index.md', // 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
-              'Button/index.md', 
+              'Button/index.md',  // 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
               'Divider/index.md', 
               'Loading/index.md', 
               'Space/index.md', 
