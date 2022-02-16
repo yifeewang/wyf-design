@@ -60,4 +60,22 @@ export default function App() {
 }
 ```
 
+## API
+
+| attribute               | desc                       | type                                  | default     | others                                          |
+| ------------------ | -------------------------- | ------------------------------------- | ---------- | ----------------------------------------------- |
+| `list`  | 公告内容 | ` Notice[]`   | `[]`      |   |
+| `stayTime`  | 一条公告展示时间，默认3000ms | `number`   | `3000`      |   |
+| `icon`   | 广播图标  | `ReactNode`  | ``     |     |
+| `closeable` |是否可关闭 ，默认false | `boolean` |  `false` | |
+| `extra` |额外操作区域，显示在关闭按钮左侧 | `ReactNode` |  `` | |
+| `onClose` |关闭时的回调 | `func` |  `` | |
+
+## Notice 
+
+| attribute  | desc               | type                       |
+| ------- | ------------------ | ------ |
+| `text` | 公告内容     | `ReactNode`  |
+| `link`    | 链接 |   `string`     |
+
 More skills for writing demo: https://www.bookstack.cn/books/dumi-1.x

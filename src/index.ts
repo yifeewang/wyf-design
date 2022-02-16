@@ -10,4 +10,5 @@ export { default as Slide } from './Slide';
 export { default as NoticeBar } from './NoticeBar';
 export { default as NoticeList } from './NoticeList';
 export { default as Banner } from './Banner';
+export { default as CircleTable } from './CircleTable';
 import './rem';

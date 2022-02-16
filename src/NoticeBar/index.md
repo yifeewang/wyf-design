@@ -57,4 +57,17 @@ export default function App() {
 }
 ```
 
+## API
+
+| attribute               | desc                       | type                                  | default     | others                                          |
+| ------------------ | -------------------------- | ------------------------------------- | ---------- | ----------------------------------------------- |
+| `content`  | 公告内容 | `string`   | ``      |   |
+| `delay`  | 开始滚动的延迟，单位 ms, 默认2000 | `number`   | `2000`      |   |
+| `icon`   | 广播图标  | `ReactNode`  | ``     |     |
+| `speed` |滚动速度，单位 px/s, 默认50 | `number` |  `50` | |
+| `closeable` |是否可关闭 ，默认false | `boolean` |  `false` | |
+| `extra` |额外操作区域，显示在关闭按钮左侧 | `ReactNode` |  `` | |
+| `onClose` |关闭时的回调 | `func` |  `` | |
+
+
 More skills for writing demo: https://www.bookstack.cn/books/dumi-1.x

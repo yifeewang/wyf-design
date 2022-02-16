@@ -65,23 +65,6 @@ const StyledSteps = styled.div<{ space: number }>`
         width: 0.64rem;
         height: 0.71rem;
       }
-
-      .small_gift {
-        background: url('@{imgurl}table_redbag_inActive.webp') no-repeat;
-        background-size: 100%;
-      }
-      .small_gift_hasDraw {
-        background: url('@{imgurl}table_redbag_active.webp') no-repeat;
-        background-size: 100%;
-      }
-      .big_gift {
-        background: url('@{imgurl}table_gift_inActive.webp') no-repeat;
-        background-size: 100%;
-      }
-      .big_gift_hasDraw {
-        background: url('@{imgurl}table_gift_active.webp') no-repeat;
-        background-size: 100%;
-      }
     }
   }
   .step {

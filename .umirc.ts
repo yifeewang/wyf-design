@@ -34,6 +34,7 @@ export default defineConfig({
               'NoticeBar/index.md',
               'NoticeList/index.md',
               'Banner/index.md',
+              'CircleTable/index.md',
             ],
         },
     ],
