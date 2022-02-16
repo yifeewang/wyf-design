@@ -1,9 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useImperativeHandle } from 'react';
 import styled from 'styled-components';
 import type { SwipeRef } from 'react-tiga-swiper';
 import Swiper from 'react-tiga-swiper';
 import 'react-tiga-swiper/dist/index.css';
-// import '../rem'
+import '../rem';
+
+export type BannerRefType = {
+  onPrev: () => void;
+  onNext: () => void;
+};
+
 type BannerItem = {
   ideaId?: string;
   picUrl?: string;
@@ -61,7 +67,7 @@ const StyledBanner = styled.div`
   }
 `;
 
-const Banner: any = (props: Props) => {
+const Banner = React.forwardRef<BannerRefType, Props>((props, ref) => {
   const {
     handleClick = () => {},
     handleChange = () => {},
@@ -74,9 +80,20 @@ const Banner: any = (props: Props) => {
     indicator = null,
     dots = null,
     bannerInfo = [],
+    bannerConfig,
+    imgConfig,
     ...rest
   } = props;
   const swiperRef = useRef<SwipeRef>(null);
+  useImperativeHandle(ref, () => ({
+    // changeVal 就是暴露给父组件的方法
+    onPrev: () => {
+      swiperRef?.current?.prev();
+    },
+    onNext: () => {
+      swiperRef?.current?.next();
+    },
+  }));
   return (
     <StyledBanner>
       <Swiper
@@ -89,15 +106,16 @@ const Banner: any = (props: Props) => {
         touchable={true}
         loop={loop}
         ref={swiperRef}
-        className={`middle_banner_swiper ${rest?.bannerConfig?.className}`}
+        className={`middle_banner_swiper ${bannerConfig?.className}`}
         onChange={handleChange}
-        {...rest?.bannerConfig}
+        {...bannerConfig}
+        {...rest}
       >
         {bannerInfo.map((item: BannerItem, index: number) => {
           return (
             <img
               key={index.toString()}
-              className={`banner ${rest?.imgConfig?.className}`}
+              className={`banner ${imgConfig?.className}`}
               src={item.picUrl}
               data-url={item.ideaUrl && item.ideaUrl.viewUrl}
               data-index={index}
@@ -109,13 +127,13 @@ const Banner: any = (props: Props) => {
               data-type="banner"
               onClick={handleClick}
               onLoad={handleLoad}
-              {...rest?.imgConfig}
+              {...imgConfig}
             />
           );
         })}
       </Swiper>
     </StyledBanner>
   );
-};
+});
 
 export default Banner;

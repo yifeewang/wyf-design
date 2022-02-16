@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import type { SwipeRef } from 'react-tiga-swiper';
 import Swiper from 'react-tiga-swiper';

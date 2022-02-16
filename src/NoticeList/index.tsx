@@ -107,12 +107,12 @@ const NoticeList = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) =
 
   useEffect(() => {
     const wrap: any = wrapRef.current;
-    const list: any = listRef.current;
+    const lists: any = listRef.current;
 
     if (data.length > 1 && visible) {
       timerRef.current = window.setTimeout(() => {
-        list.style.transitionProperty = 'transform';
-        list.style.transform = `translateY(-${wrap.offsetHeight}px)`;
+        lists.style.transitionProperty = 'transform';
+        lists.style.transform = `translateY(-${wrap.offsetHeight}px)`;
       }, stayTime);
       return () => {
         window.clearTimeout(timerRef.current);
@@ -127,7 +127,7 @@ const NoticeList = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) =
       className={clsx(className, 'uc-noticelist', { hide: !visible })}
     >
       {icon && <div className="icon-part">{icon}</div>}
-      <div className="content-wrap" ref={wrapRef}>
+      <div className="content-wrap" ref={wrapRef as any}>
         <div
           className="list"
           ref={listRef}

@@ -177,7 +177,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>((props, ref) => {
     ...rest
   } = props;
 
-  const [waiting, setWaiting] = useState(false);
+  const [waiting] = useState(false);
 
   const icon = props.icon || (loading ? <Spin /> : null);
 

@@ -136,14 +136,14 @@ const NoticeBar = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) =>
       className={clsx(className, 'uc-noticebar', { hide: !visible })}
     >
       {icon && <div className="icon-part">{icon}</div>}
-      <div className="content-wrap" ref={wrapRef}>
+      <div className="content-wrap" ref={wrapRef as any}>
         <div
           className="content-text"
           key={v}
           onTransitionEnd={() => {
             setV((v) => v + 1);
           }}
-          ref={contentRef}
+          ref={contentRef as any}
         >
           {content}
         </div>

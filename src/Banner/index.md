@@ -12,10 +12,15 @@ group:
 Demo:
 
 ```tsx
-import React from 'react';
-import { Divider, Banner } from 'wyf-design';
+import React, {useState, useRef} from 'react';
+import { Divider, Banner, Switch, Button } from 'wyf-design';
 
 export default () =>{
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [loop, setLoop] = useState(true);
+  const [dot, setDot] = useState(true);
+  const [isH, setisH] = useState(true);
+  const childRef = useRef();
     const bannerInfo = [
         {
             ideaId: '111111',
@@ -55,18 +60,91 @@ export default () =>{
     const handleChange = (selected, prevSelected) => {
         console.log('handleChange', selected,prevSelected)
     }
+    const imgConfig ={
+        style: {height: '150px'}
+    }
+    const bannerConfig ={
+        style: {height: '150px'}
+    }
     return (
         <div>
-            <Divider>默认</Divider>
+            <Divider>
+                <Switch checked={autoPlay} onChange={(checked) => setAutoPlay(checked)} />
+                显示左右换页指示器
+            </Divider>
+            
+            <Divider>
+                <Switch checked={loop} onChange={(checked) => setLoop(checked)} />
+                循环
+            </Divider>
+            <Divider>
+                <Switch checked={dot} onChange={(checked) => setDot(checked)} />
+                显示点分页指示器
+            </Divider>
+            <Divider>
+                <Switch checked={isH} onChange={(checked) => setisH(checked)} />
+                水平轮播
+            </Divider>
             <Banner 
+                loop={loop}
+                autoPlay={2000}
+                direction={isH ? 'horizontal' : 'vertical'}
+                showDots={dot}
+                showIndicators={autoPlay}
                 bannerInfo={bannerInfo} 
                 handleClick={handleClick}
                 handleLoad={handleLoad}
                 handleChange={handleChange}
+                bannerConfig={bannerConfig}
+                imgConfig={imgConfig}
+                ref={childRef}
             ></Banner>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
+                <Button onClick={() => childRef.current?.onPrev()}>上一页</Button>
+                <Button onClick={() => childRef.current?.onNext()}>下一页</Button>
+            </div>
         </div>
     )
 };
 ```
+## API
+
+| attribute               | desc                       | type                                  | default     | others                                          |
+| ------------------ | -------------------------- | ------------------------------------- | ---------- | ----------------------------------------------- |
+| `bannerInfo`  | Animation duration(ms)       | `array`   | `[]`      |   |
+| `duration`  | Animation duration(ms)       | `number`   | `300`      |   |
+| `autoPlay`   | Autoplay interval(ms)       | `number`  | `3000`     |     |
+| `selectedIndex` | index of initial swiper, start from 0 | `number` |  `0` | |
+| `direction`   | scroll direction          | `string`  | `horizontal | 'vertical`     |     |
+| `loop`   | whether to enable loop       | `bool`           | `true`     |  |
+| `touchable`   | whether to enable touchable       | `bool`           | `true`     |  |
+| `showIndicators`   | whether to enable show indicators  | `bool` | `true` |  |
+| `showDots`    | whether to enable show dots           | `bool`     | `true` | |
+| `dots`   | bottom dots  | `React.ReactNode`    | `null`    |   |
+| `indicator`   | indicator   | `React.ReactNode`    | `null`    |   |
+| `style`     | style   |  `React.CSSProperties` | `{}`    |        |
+| `className`   | className  | `string`   | `''`       |    |
+| `bannerConfig`   | {} className or style  | `object`   | `{className: 'banner'}`       |    |
+| `imgConfig`   | {} className or style  | `object`   | `{className: 'imgItem'}`       |    |
+| `onChange`  | emitted when currage swipe changed | `(current: number, prev: number): void` | `noop`   |   |
+
+
+## bannerInfo imgConfig
+
+| attribute  | desc               | type                       |
+| ------- | ------------------ | ------ |
+| `ideaId` | ideaId     | `string`  |
+| `picUrl`    | picUrl |   `string`     |
+| `ideaUrl`    | ideaUrl |  `any` |
+| `sceneCode`    | sceneCode | `string`|
+| `sceneGroupCode`    | sceneGroupCode | `string`|
+| `isNotice`    | isNotice | `string`|
+## Swipe Methods
+
+| methods  | desc               | argument | desc                       |
+| ------- | ------------------ | ------ | ------------------------------ |
+| `swipeTo` | swipe to target index     | `index`  | start 0 |
+| `prev`    | swipe to prev item |        |                                |
+| `next`    | swipe to next item |        |                                |
 
 More skills for writing demo: https://www.bookstack.cn/books/dumi-1.x

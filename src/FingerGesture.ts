@@ -8,15 +8,15 @@ import { isTouch } from './dom';
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = function () {};
 
-const getLen = (v) => {
+const getLen = (v: any) => {
   return Math.sqrt(v.x * v.x + v.y * v.y);
 };
 
-function dot(v1, v2) {
+function dot(v1: any, v2: any) {
   return v1.x * v2.x + v1.y * v2.y;
 }
 
-function getAngle(v1, v2) {
+function getAngle(v1: any, v2: any) {
   const mr = getLen(v1) * getLen(v2);
   if (mr === 0) return 0;
   let r = dot(v1, v2) / mr;
@@ -24,11 +24,11 @@ function getAngle(v1, v2) {
   return Math.acos(r);
 }
 
-function cross(v1, v2) {
+function cross(v1: any, v2: any) {
   return v1.x * v2.y - v2.x * v1.y;
 }
 
-function getRotateAngle(v1, v2) {
+function getRotateAngle(v1: any, v2: any) {
   let angle = getAngle(v1, v2);
   if (cross(v1, v2) > 0) {
     angle *= -1;
@@ -37,16 +37,16 @@ function getRotateAngle(v1, v2) {
   // return (angle * 180) / Math.PI;
 }
 
-const HandlerAdmin = function (el) {
+const HandlerAdmin = function (el: any) {
   this.handlers = [];
   this.el = el;
-};
+} as any;
 
-HandlerAdmin.prototype.add = function (handler) {
+HandlerAdmin.prototype.add = function (handler: any) {
   this.handlers.push(handler);
 };
 
-HandlerAdmin.prototype.del = function (handler) {
+HandlerAdmin.prototype.del = function (handler: any) {
   if (!handler) this.handlers = [];
 
   for (let i = this.handlers.length; i >= 0; i--) {
@@ -56,14 +56,14 @@ HandlerAdmin.prototype.del = function (handler) {
   }
 };
 
-HandlerAdmin.prototype.dispatch = function (...args) {
+HandlerAdmin.prototype.dispatch = function (...args: any) {
   for (let i = 0, len = this.handlers.length; i < len; i++) {
     const handler = this.handlers[i];
     handler.apply?.(this.el, args);
   }
 };
 
-function wrapFunc(el, handler) {
+function wrapFunc(el: any, handler: any) {
   const handlerAdmin = new HandlerAdmin(el);
   handlerAdmin.add(handler);
 
@@ -96,10 +96,7 @@ export type Options = Partial<{
 }>;
 
 /** 手势操作 */
-const FingerGesture: (el: Element, option: Options) => void = function (
-  el: Element,
-  option: Options,
-) {
+const FingerGesture = function (el: Element, option: Options) {
   this.element = el;
 
   this.start = this.start.bind(this);
@@ -155,10 +152,10 @@ const FingerGesture: (el: Element, option: Options) => void = function (
   this.swipeTimeout = null;
   this.x1 = this.x2 = this.y1 = this.y2 = null;
   this.preTapPosition = { x: null, y: null };
-};
+} as any;
 
 FingerGesture.prototype = {
-  start: function (evt) {
+  start: function (evt: any) {
     if (!evt.touches) {
       evt.touches = evt.touches || [];
       evt.touches[0] = {
@@ -205,7 +202,7 @@ FingerGesture.prototype = {
       750,
     );
   },
-  move: function (evt) {
+  move: function (evt: any) {
     if (!this.isMoving) {
       return;
     }
@@ -280,14 +277,14 @@ FingerGesture.prototype = {
       evt.preventDefault();
     }
   },
-  end: function (evt) {
+  end: function (evt: any) {
     if (this.isMoving) {
       this.isMoving = false;
     }
     if (isTouch && !evt.changedTouches) return;
     if (!evt.touches) {
-      evt.touches = evt.touches || [];
-      evt.touches[0] = {
+      (evt as any).touches = evt.touches || [];
+      (evt as any).touches[0] = {
         pageX: evt.pageX,
         pageY: evt.pageY,
       };
@@ -342,7 +339,7 @@ FingerGesture.prototype = {
     clearTimeout(this.longTapTimeout);
     clearTimeout(this.swipeTimeout);
   },
-  cancel: function (evt) {
+  cancel: function (evt: any) {
     this.cancelAll();
     this.touchCancel.dispatch(evt, this.element);
   },
@@ -352,7 +349,7 @@ FingerGesture.prototype = {
   // _cancelSingleTap: function () {
   //   clearTimeout(this.singleTapTimeout);
   // },
-  _swipeDirection: function (x1, x2, y1, y2) {
+  _swipeDirection: function (x1: any, x2: any, y1: any, y2: any) {
     return Math.abs(x1 - x2) >= Math.abs(y1 - y2)
       ? x1 - x2 > 0
         ? 'left'
@@ -362,13 +359,13 @@ FingerGesture.prototype = {
       : 'down';
   },
 
-  on: function (evt, handler) {
+  on: function (evt: any, handler: any) {
     if (this[evt]) {
       this[evt].add(handler);
     }
   },
 
-  off: function (evt, handler) {
+  off: function (evt: any, handler: any) {
     if (this[evt]) {
       this[evt].del(handler);
     }

@@ -106,7 +106,7 @@ export type SlideRefType = {
   next: () => void;
 };
 
-const getItems = (children, loop, height) => {
+const getItems = (children: any, loop: any, height: any) => {
   const items = [].concat(children),
     firstItem = items[0],
     lastItem = items[items.length - 1];
@@ -116,9 +116,9 @@ const getItems = (children, loop, height) => {
     items.unshift(lastItem);
   }
 
-  return React.Children.map(items, (c, index) =>
+  return React.Children.map(items, (c: any, index: number) =>
     React.cloneElement(c, {
-      key: index,
+      key: index.toString(),
       className: clsx('uc-slide-page', c.props?.className),
       style: { ...c.props?.style, height },
     }),
@@ -241,7 +241,7 @@ const Slide = React.forwardRef<SlideRefType, Props>((props, ref) => {
 
   useLayoutEffect(() => {
     const s = thisRef.current;
-    const container = containerRef.current;
+    const container: any = containerRef.current;
     s.wrapWidth = container.offsetWidth;
     s.wrapHeight = container.offsetHeight;
 
@@ -251,7 +251,7 @@ const Slide = React.forwardRef<SlideRefType, Props>((props, ref) => {
   useEffect(() => {
     if (autoPlay && len > 1) {
       const timer = window.setInterval(
-        (p) => {
+        (p: any) => {
           if (!thisRef.current.isMoving) {
             slideToPageIndex(p + 1);
           }
@@ -284,12 +284,14 @@ const Slide = React.forwardRef<SlideRefType, Props>((props, ref) => {
 
   const evtProps: any = {};
 
-  evtProps[isTouch ? 'onTouchStart' : 'onMouseDown'] = (e) => {
-    !isMobile && e.preventDefault();
+  evtProps[isTouch ? 'onTouchStart' : 'onMouseDown'] = (e: any) => {
+    if (!isMobile) {
+      e.preventDefault();
+    }
 
     const s = thisRef.current;
     s.isMoving = true;
-    wrapElRef.current.style.transitionProperty = 'none';
+    (wrapElRef as any).current.style.transitionProperty = 'none';
     s.lastX = s.x;
     s.lastY = s.y;
   };
@@ -324,8 +326,8 @@ const Slide = React.forwardRef<SlideRefType, Props>((props, ref) => {
   useLayoutEffect(() => {
     const wrapEl = wrapElRef.current;
     const fg = new FingerGesture(wrapEl, {
-      onPressMove: (e) => {
-        const s = thisRef.current;
+      onPressMove: (e: any) => {
+        const s: any = thisRef.current;
         const instance = autoRef.current;
 
         if (
@@ -340,16 +342,30 @@ const Slide = React.forwardRef<SlideRefType, Props>((props, ref) => {
             return;
           }
           s.x += e.deltaX;
-          wrapElRef.current.style.transform = `translate3d(${s.x}px, 0, 0)`;
+          if (
+            wrapElRef &&
+            wrapElRef.current &&
+            wrapElRef.current.style &&
+            wrapElRef.current.style.transform
+          ) {
+            wrapElRef.current.style.transform = `translate3d(${s.x}px, 0, 0)`;
+          }
         } else {
           if (s.y > 0 || s.y < -1 * (count - 1) * s.wrapHeight) {
             return;
           }
           s.y += e.deltaY;
-          wrapElRef.current.style.transform = `translate3d(0, ${s.y}px, 0)`;
+          if (
+            wrapElRef &&
+            wrapElRef.current &&
+            wrapElRef.current.style &&
+            wrapElRef.current.style.transform
+          ) {
+            wrapElRef.current.style.transform = `translate3d(0, ${s.y}px, 0)`;
+          }
         }
       },
-    });
+    }) as any;
     return () => fg.destroy();
   }, [count, direction, autoRef]);
 
