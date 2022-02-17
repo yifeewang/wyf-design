@@ -26,6 +26,7 @@ type GAFieldsObject = {
   nonInteraction?: boolean;
 };
 
-interface Window {
+declare interface Window {
+    WebKitCSSKeyframesRule:  any
 }
 declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;

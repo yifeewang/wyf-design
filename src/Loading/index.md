@@ -13,22 +13,36 @@ Demo:
 
 ```tsx
 import React, {useState} from 'react';
-import { Loading, Button, Space, Spin } from 'wyf-design';
+import { Loading, Button, Space } from 'wyf-design';
 
 export default () => {
     const [loading, setLoading] = useState(false);
     return (
         <div>
             <Space>
-                <Button type="primary" onClick={() => setLoading(true)} loading={loading}>
-                    700ms后显示 loading
+                <Button 
+                    type="primary" 
+                    onClick={() => {
+                        Loading.showLoading('hahaha')
+                        setTimeout(() => {
+                            Loading.hideLoading()
+                        }, 2000)
+                    }} 
+                    loading={loading}>
+                    2s 关闭
                 </Button>
 
-                <Button onClick={() => setLoading(false)}>隐藏loading </Button>
+                <Button 
+                    onClick={() => {
+                        Loading.showLoading('hahaha')
+                        setTimeout(() => {
+                            Loading.hideLoading()
+                        }, 1000)
+                    }} 
+                >
+                    1s 关闭
+                </Button>
             </Space>
-            <Loading wait="1000" visible={loading}>
-                <Spin style={{ fontSize: 30, color: '#00bc8d' }} />
-            </Loading>
         </div>
     )
 };

@@ -21,6 +21,7 @@ export default defineConfig({
               'Space/index.md', 
               'Spin/index.md', 
               'Switch/index.md', 
+              'Toast/index.md', 
             ],
         },
         {
