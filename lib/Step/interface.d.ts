@@ -18,6 +18,8 @@ export declare type Step = {
 export declare type Props = {
     /** 步骤数据 */
     steps: Step[];
+    /** 类型 normal || special 表示普通进度条 和 动态进度条 */
+    type?: string;
     /** 指定当前步骤，从 0 开始记数 */
     current?: number;
     className?: string;

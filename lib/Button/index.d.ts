@@ -31,7 +31,5 @@ declare const Button: React.ForwardRefExoticComponent<{
     htmlType?: 'submit' | 'reset' | 'button' | undefined;
     /** 点击回调 */
     onClick?: ((e: React.SyntheticEvent) => void) | undefined;
-    /** 点击后，下次能点击的时间间隔，防止重复点击, 如果是true, 间隔默认是1s  */
-    wait?: number | boolean | undefined;
 } & HTMLAttributes<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement> & React.RefAttributes<HTMLButtonElement>>;
 export default Button;

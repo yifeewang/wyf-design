@@ -1,7 +1,7 @@
 import _extends from "@babel/runtime/helpers/esm/extends";
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
-var _excluded = ["current", "dotStyle", "className", "direction", "steps"];
+var _excluded = ["current", "dotStyle", "className", "direction", "steps", "type"];
 import React, { useLayoutEffect, useRef, useImperativeHandle, useState } from 'react';
 import StyledSteps from './less';
 import clsx from 'clsx';
@@ -18,6 +18,8 @@ var Steps = /*#__PURE__*/React.forwardRef(function (props, ref) {
       direction = _props$direction === void 0 ? 'horizontal' : _props$direction,
       _props$steps = props.steps,
       steps = _props$steps === void 0 ? [] : _props$steps,
+      _props$type = props.type,
+      type = _props$type === void 0 ? 'normal' : _props$type,
       rest = _objectWithoutProperties(props, _excluded);
 
   var domRef = useRef();
@@ -36,6 +38,7 @@ var Steps = /*#__PURE__*/React.forwardRef(function (props, ref) {
     var resizeHandler = function resizeHandler() {
       if (steps.length > 1) {
         var domEl = domRef.current;
+        if (!domEl) return;
         setSpace(Math.max((isHorizontal ? domEl.offsetWidth : domEl.offsetHeight) / steps.length, 60));
       }
     };
@@ -57,7 +60,9 @@ var Steps = /*#__PURE__*/React.forwardRef(function (props, ref) {
     ref: domRef,
     className: clsx(className, direction),
     space: space
-  }), steps.map(function (item, idx) {
+  }), type === 'normal' ? /*#__PURE__*/React.createElement("div", {
+    className: "step-normal-wraper"
+  }, steps.map(function (item, idx) {
     return /*#__PURE__*/React.createElement("div", {
       key: idx,
       className: clsx('step', {
@@ -84,7 +89,35 @@ var Steps = /*#__PURE__*/React.forwardRef(function (props, ref) {
     }, item.title), !!item.description && /*#__PURE__*/React.createElement("div", {
       className: "step-description"
     }, item.description)));
-  }));
+  })) : /*#__PURE__*/React.createElement("div", {
+    className: "step-wraper"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "page-steps-progress"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "progress",
+    id: "progress",
+    style: {
+      width: "".concat(current / (steps.length - 1) * 100, "%")
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "step_text"
+  }, steps.map(function (item, index) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: "index_topIcon_".concat(index),
+      className: "step_item",
+      style: {
+        left: "calc(".concat(index / (steps.length - 1) * 100, "%)")
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "step_item_text"
+    }, item.title, item.giftType ? /*#__PURE__*/React.createElement("img", {
+      className: "step-gift",
+      src: item.giftType === 'active' ? item.giftActiveSrc : item.giftNotActiveSrc,
+      onClick: function onClick() {
+        item.callBack(item);
+      }
+    }) : ''));
+  })))));
 }); // Steps.displayName = 'UC-Steps';
 
 export default Steps;

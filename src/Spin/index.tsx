@@ -66,7 +66,7 @@ const StyledSpin = styled.div`
 `;
 
 /** 加载中指示器,继承父容器颜色和字体大小 */
-const Spin = React.forwardRef<HTMLDivElement, Props>(({ wait, className, ...rest }, ref) => {
+const Spin = React.forwardRef<HTMLDivElement, Props>(({ className, ...rest }, ref) => {
   const el = <StyledSpin {...rest} ref={ref} className={clsx(className)} />;
 
   return el;

@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import type { HTMLAttributes } from 'react';
 import React, { useRef, useState, useLayoutEffect } from 'react';
 import styled from 'styled-components';
-import Space from '../Space';
 
 const StyledNoticeBar = styled.div`
   height: 30px;
@@ -150,7 +149,7 @@ const NoticeBar = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) =>
       </div>
       {(closeable || extra) && (
         <div className={clsx('content-extra')}>
-          <Space>
+          <div>
             {props.extra}
             {props.closeable && (
               <div className="uc-closeable">
@@ -165,7 +164,7 @@ const NoticeBar = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) =>
                 />
               </div>
             )}
-          </Space>
+          </div>
         </div>
       )}
     </StyledNoticeBar>
